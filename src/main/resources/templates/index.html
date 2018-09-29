@@ -5,7 +5,8 @@
 	
 	<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		  integrity = "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-		  crossorigin = "anonymous">
+		  crossorigin = "anonymous"
+		  th:href = "@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}">
 	
 	<title>Recipe Home</title>
 </head>
@@ -17,14 +18,16 @@
 		</div>
 		
 		<div class = "row">
-			<table class="table table-hover">
+			<table class = "table table-hover">
 				<tr>
 					<th>ID</th>
 					<th>Description</th>
+					<th></th>
 				</tr>
 				<tr th:each = "recipe : ${recipes}">
 					<td th:text = "${recipe.id}">123</td>
 					<td th:text = "${recipe.description}">Tasty Goodnees</td>
+					<td><a href = "#" th:href="@{'/recipe/show/'+${recipe.id}}">View</a></td>
 				</tr>
 			</table>
 		</div>
@@ -38,6 +41,7 @@
 			crossorigin = "anonymous"></script>
 	<script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 			integrity = "sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-			crossorigin = "anonymous"></script>
+			crossorigin = "anonymous"
+			th:src = "@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}"></script>
 </body>
 </html>
