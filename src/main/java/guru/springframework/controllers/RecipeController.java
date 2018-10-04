@@ -1,5 +1,6 @@
 package guru.springframework.controllers;
 
+import guru.springframework.commands.RecipeCommand;
 import guru.springframework.service.RecipeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ public class RecipeController {
 	}
 	
 	public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
-	
+		RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
+		return "redirect:/recipe/show/" + savedCommand.getId();
 	}
 }
