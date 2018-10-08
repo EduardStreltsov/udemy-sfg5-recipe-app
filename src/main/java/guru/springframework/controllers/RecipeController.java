@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,20 +17,21 @@ public class RecipeController {
 	
 	private final RecipeService recipeService;
 	
-	@RequestMapping("/show/{id}")
+	@RequestMapping("/view/{id}")
 	public String showById(@PathVariable String id, Model model) {
 		model.addAttribute("recipe", recipeService.getById(new Long(id)));
-		return "show";
+		return "view";
 	}
 	
 	@RequestMapping("/new")
 	public String addNewRecipe(Model model) {
-		//		model.addAttribute("recipe", new RecipeCommand());
-		return "form";
+		model.addAttribute("recipe", new RecipeCommand());
+		return "edit";
 	}
 	
+	@PostMapping
 	public String saveOrUpdate(@ModelAttribute RecipeCommand command) {
 		RecipeCommand savedCommand = recipeService.saveRecipeCommand(command);
-		return "redirect:/recipe/show/" + savedCommand.getId();
+		return "redirect:/recipe/view/" + savedCommand.getId();
 	}
 }

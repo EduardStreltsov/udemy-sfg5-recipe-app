@@ -12,7 +12,9 @@
 </head>
 <body>
 	
-	<div class = "container border-warning">
+	<!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+	<div class = "container">
+		
 		<div class = "card mt-2">
 			<div class = "card-header">
 				<h4 class = "card-title" th:text = "${recipe.description}">Recipe Description Here!</h4>
