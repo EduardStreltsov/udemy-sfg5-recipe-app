@@ -40,9 +40,9 @@ public class RecipeServiceImplTest {
 		HashSet recipeData = new HashSet();
 		recipeData.add(recipe);
 		
-		when(recipeService.getRecipes()).thenReturn(recipeData);
+		when(recipeService.getAll()).thenReturn(recipeData);
 		
-		Set<Recipe> recipeSet = recipeService.getRecipes();
+		Set<Recipe> recipeSet = recipeService.getAll();
 		assertEquals(recipeSet.size(), 1);
 		verify(recipeRepository, times(1)).findAll();
 	}
